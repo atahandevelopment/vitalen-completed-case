@@ -95,3 +95,9 @@
         margin-left: 2.3%;
     }
 }
+
+@media (min-width: 1441px) {
+    .nav-content {
+        width: 1258px;
+    }
+}
