@@ -11,3 +11,28 @@
     flex-direction: column;
     align-items: center;
 }
+
+.loader-container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #24123A;
+  }
+
+.loader {
+    height: 50px;
+    aspect-ratio: 1;
+    border: 3px solid #fff;
+    animation: l4 2s infinite;
+    text-align: center;
+    vertical-align: center;
+  }
+  @keyframes l4 {
+    0%  {aspect-ratio:1;border-radius:50px}
+    25% {aspect-ratio:2;border-radius:50px} 
+    50% {aspect-ratio:2;border-radius:0}  
+    75% {aspect-ratio:1;border-radius:0} 
+    100%{aspect-ratio:1;border-radius:50px}
+  }

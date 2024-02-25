@@ -40,7 +40,9 @@
 .random-movie{
     position: relative;
     bottom: 450px;
-    left: 45px;
+    /* left: 45px; */
+    max-width:100%;
+    padding: 0 45px;
     z-index:9;
     display: flex;
     gap:195px;
@@ -50,4 +52,14 @@
     position: relative;
     text-align: right;
     z-index:9;
+}
+
+@media screen and (max-width: 1440px) {
+    .header-container {
+        max-width: 100%;
+    }
+
+    .random-movie {
+        
+    }
 }

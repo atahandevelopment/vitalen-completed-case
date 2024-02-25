@@ -10,6 +10,7 @@ import "./styles/home.css";
 import { TvSeries } from "../../store/types";
 import MovieCart from "../../../components/MovieCart";
 import { Link } from "react-router-dom";
+import { getLoaderStatus } from "../../store/loader";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -41,6 +42,7 @@ const Home = () => {
       });
       GetTopRatedSeries().then((series) => {
         setTopRatedTv(series.data.results);
+        dispatch(getLoaderStatus(false));
       })
       .catch((error) => {
         console.error(error);
@@ -83,7 +85,7 @@ const Home = () => {
         <img src={headerImg} />
         <div className="random-movie">
           {randomMovie ? (
-            <Link style={{ textDecoration:"none"}} to={`/movie-detail/${randomMovie?.id}`}>
+            <Link style={{ textDecoration:"none"}} onClick={() => dispatch(getLoaderStatus(true))} to={`/movie-detail/${randomMovie?.id}`}>
               <MovieCart data={randomMovie} />
             </Link>
           ) : (
@@ -94,7 +96,7 @@ const Home = () => {
             <h1>World of TV Series & Movies</h1>
           </div>
           {randomTvSerie ? (
-            <Link style={{ textDecoration:"none"}} to={`/movie-detail/${randomMovie?.id}`}>
+            <Link style={{ textDecoration:"none"}}  onClick={() => dispatch(getLoaderStatus(true))} to={`/movie-detail/${randomMovie?.id}`}>
               <MovieCart data={randomTvSerie} />
             </Link>
           ) : (

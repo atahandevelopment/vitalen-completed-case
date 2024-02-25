@@ -5,6 +5,8 @@ import "./styles/detail.css";
 import DefaultLayout from "../../../components/Layout";
 import { FaArrowCircleLeft } from "react-icons/fa";
 import Cast, { CharacterInfo } from "../../../components/Cast";
+import { getLoaderStatus } from "../../store/loader";
+import { useDispatch } from "react-redux";
 
 type Genres = {
   id: number;
@@ -25,6 +27,7 @@ type MovieDetailTypes = {
 
 const Detail = () => {
   const { id } = useParams();
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const [movieDetail, setMovieDetail] = useState<MovieDetailTypes>();
   const [cast, setCast] = useState([]);
@@ -48,11 +51,15 @@ const Detail = () => {
     GetPersons(id).then((detail) => {
       setCrew(detail.data.crew);
       setCast(detail.data.cast);
+      dispatch(getLoaderStatus(false))
     });
-  }, [id]);
+  }, [id, dispatch]);
 
   const handleGoBack = () => {
-    navigate("/");
+    dispatch(getLoaderStatus(true));
+    setTimeout(() => {
+      navigate("/");
+    }, 500);
   };
 
   useEffect(() => {
@@ -61,6 +68,7 @@ const Detail = () => {
     );
     setDirectors(director);
   }, [crew]);
+
 
   return (
     <DefaultLayout>
@@ -76,57 +84,57 @@ const Detail = () => {
             </button>
           </div>
           <div className="info">
-          <div className="image-container">
-            {movieDetail ? (
-              <img
-                src={`${import.meta.env.VITE_IMAGE_BASE}${
-                  movieDetail?.poster_path
-                }`}
-              />
-            ) : (
-              <></>
-            )}
-          </div>
-          <div className="detail-content">
-            <h1 className="head">
-              {movieDetail ? title : ""}{" "}
-              <span>{`${year ? `(${year})` : ""}`}</span>
-            </h1>{" "}
-            <div className="properties">
-              <span>{`${day}/${month}/${year}`}(RD)</span>
-              <span>•</span>
-              {movieDetail &&
-              movieDetail.genres &&
-              movieDetail?.genres.length > 0 ? (
-                movieDetail?.genres.map((genre: Genres, i) => {
-                  return (
-                    <span className="genres" key={i}>
-                      {genre.name}
-                    </span>
-                  );
-                })
+            <div className="image-container">
+              {movieDetail ? (
+                <img
+                  src={`${import.meta.env.VITE_IMAGE_BASE}${
+                    movieDetail?.poster_path
+                  }`}
+                />
               ) : (
                 <></>
               )}
             </div>
-            <p>{movieDetail ? movieDetail.overview : ""}</p>
-            <div className="crew-field">
-              {directors && directors.length > 0 ? (
-                directors.map(
-                  (director: { name: string; job: string }, index) => {
+            <div className="detail-content">
+              <h1 className="head">
+                {movieDetail ? title : ""}{" "}
+                <span>{`${year ? `(${year})` : ""}`}</span>
+              </h1>{" "}
+              <div className="properties">
+                <span>{`${day}/${month}/${year}`}(RD)</span>
+                <span>•</span>
+                {movieDetail &&
+                movieDetail.genres &&
+                movieDetail?.genres.length > 0 ? (
+                  movieDetail?.genres.map((genre: Genres, i) => {
                     return (
-                      <div className="directors" key={index}>
-                        <span>{director ? director?.name : ""}</span>
-                        <span>{director ? director?.job : ""}</span>
-                      </div>
+                      <span className="genres" key={i}>
+                        {genre.name}
+                      </span>
                     );
-                  }
-                )
-              ) : (
-                <></>
-              )}
+                  })
+                ) : (
+                  <></>
+                )}
+              </div>
+              <p>{movieDetail ? movieDetail.overview : ""}</p>
+              <div className="crew-field">
+                {directors && directors.length > 0 ? (
+                  directors.map(
+                    (director: { name: string; job: string }, index) => {
+                      return (
+                        <div className="directors" key={index}>
+                          <span>{director ? director?.name : ""}</span>
+                          <span>{director ? director?.job : ""}</span>
+                        </div>
+                      );
+                    }
+                  )
+                ) : (
+                  <></>
+                )}
+              </div>
             </div>
-          </div>
           </div>
         </div>
       </div>
