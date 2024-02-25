@@ -1,0 +1,43 @@
+.popular-tv {
+    width: 1231px;
+    height: 492px;
+    margin: 0 45px 134px 45px;
+
+}
+
+.popular-tv p {
+    width: 230px;
+    height: 30px;
+    font-family: "Montserrat", sans-serif;
+    font-size: 25px;
+    font-weight: 700;
+    line-height: 30.48px;
+    letter-spacing: 0em;
+    text-align: center;
+    color: #000000;
+}
+
+.popular-tv .movies-field {
+    flex: 0 0 auto;
+    max-width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    overflow-x: auto;
+    gap:93px;
+    align-items: center;
+}
+
+.popular-tv .movies-field::-webkit-scrollbar {
+    height: 10px;
+    margin-top: 20px;
+  }
+  
+.popular-tv .movies-field::-webkit-scrollbar-track {
+    background-color: #fff; 
+  }
+  
+.popular-tv .movies-field::-webkit-scrollbar-thumb {
+    background-color: #a3a2a2;
+    border-radius: 5px; 
+  }

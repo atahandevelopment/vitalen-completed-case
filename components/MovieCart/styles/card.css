@@ -1,0 +1,73 @@
+.cart-container {
+    width: 238px;
+    height: 417px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-start;
+}
+
+.cart-container .score {
+    width: 93px;
+    height: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px 4px 0px 0px;
+    background-color: #24123A;
+}
+
+.cart-container .score p {
+    width: auto;
+    height: 20px;
+    font-family: "Montserrat", sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 20px;
+    letter-spacing: 0em;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+.cart-container .img-container {
+    width: 238px;
+    height: 383px;
+    border-radius: 4px 0px 4px 4px;
+    box-shadow: 0px 0px 25px 0px #00000033;
+    position: relative; 
+    background-color: #24123AC2;
+}
+
+.cart-container .img-container img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+}
+
+.cart-container .img-container .movie-name-container {
+    width: 238px;
+    height: 96px;
+    background-color: #24123AC2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(8px);
+    border-radius: 0px 0px 4px 4px;
+    position: absolute; /* Ekle: Mutlak konumlandırma için */
+    bottom: 0; /* Ekle: En altta görünmesini sağlamak için */
+    left: 0; /* Ekle: Yatayda tam ortada görünmesini sağlamak için */
+    right: 0; /* Ekle: Yatayda tam ortada görünmesini sağlamak için */
+}
+
+.cart-container .img-container .movie-name {
+    width: 194px;
+    height: 37px;
+    font-family: "Montserrat", sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0em;
+    text-align: center;
+    color: #FFFFFF;
+    word-wrap: break-word;
+}

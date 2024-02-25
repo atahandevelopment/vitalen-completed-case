@@ -1,0 +1,198 @@
+.detail-container {
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    background-color: #FFFFFF;
+    margin-bottom: 32px;
+}
+
+
+.detail-field {
+    width: 100vw;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    background-color: #24123A
+}
+.detail-field .info {
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap:20px;
+    padding: 32px 45px;
+    flex-wrap: wrap;
+}
+.detail-field .btn-field {
+    width: 100%;
+    height: 60px;
+    display: flex;
+    padding: 0  10px;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.detail-field .back-button {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.detail-field .back-button:hover {
+    opacity: 0.8;
+    background-color: #24123AC2;
+}
+
+.detail-container .detail-field .image-container {
+    width: 30%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.detail-container .detail-field .image-container img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    border-radius: 8px;
+}
+
+.detail-container .detail-field .detail-content {
+    width: 60%;
+    height: auto;
+    color:#FFFFFF;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 0 50px;
+}
+.detail-field .detail-content .head {
+    font-family: "Montserrat", sans-serif;
+    margin-bottom: 4px;
+}
+
+.detail-field .detail-content .properties {
+    font-family: "Montserrat", sans-serif;
+    margin-bottom: 30px;
+    display: flex;
+    gap:10px;
+}
+
+.genres {
+    width: auto;
+    padding: 2px 5px;
+    border-radius: 5px;
+    background-color: #FFFFFF;
+    color: #24123A;
+    font-size: 12px;
+}
+
+.detail-field .detail-content .properties p {
+    margin-bottom: 0;
+}
+
+
+
+.detail-container .detail-field .detail-content p {
+    font-family: "Montserrat", sans-serif;
+    margin-bottom: 30px;
+    width: 100%;
+    height: auto;
+}
+
+.crew-field {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: flex-start;
+    font-family: "Montserrat", sans-serif;
+    flex-wrap: wrap;
+    gap:40px;
+}
+
+.directors {
+    width: auto;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    text-wrap: wrap;
+}
+
+.directors span:nth-child(1) {
+    font-weight: 600;
+}
+.directors span:nth-child(2) {
+    font-size: 12px;
+}
+
+.cast-field {
+    max-width: 98%;
+    height:auto;
+    margin-bottom:32px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap:16px;
+    overflow-x: auto;
+    padding-bottom: 10px;
+}
+
+.cast-field::-webkit-scrollbar {
+    height: 10px;
+    margin-top: 20px;
+  }
+  
+  .cast-field::-webkit-scrollbar-track {
+    background-color: #fff; 
+  }
+  
+  .cast-field::-webkit-scrollbar-thumb {
+    background-color: #a3a2a2;
+    border-radius: 5px; 
+  }
+
+  .actor-header {
+    width: 98%;
+    height:auto;
+    font-family: "Montserrat", sans-serif;
+    margin-bottom: 20px;
+  }
+
+  @media screen and (max-width: 1440px) {
+    .detail-container .detail-field .image-container {
+        width: 100%;
+        height: auto;
+    }
+
+    .detail-container .detail-field .detail-content {
+        width: 100%;
+        height: auto;
+        color:#FFFFFF;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        padding: 0;
+    }
+    .detail-field .detail-content .head {
+        font-family: "Montserrat", sans-serif;
+        margin-bottom: 4px;
+        width: 100%;
+        height: auto;
+    }
+    .detail-container .detail-field .detail-content p {
+        font-family: "Montserrat", sans-serif;
+        margin-bottom: 30px;
+        width: 100%;
+        height: auto;
+    }
+  }
