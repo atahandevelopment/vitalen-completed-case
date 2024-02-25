@@ -37,7 +37,7 @@
   }
   
 .popular-movies .movies-field::-webkit-scrollbar-thumb {
-    background-color: #a3a2a2;
+    background-color: #ececec;
     border-radius: 5px; 
   }
 

@@ -1,19 +1,31 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { GetDetailMovie, GetPersons } from "./service";
 import "./styles/detail.css";
 import DefaultLayout from "../../../components/Layout";
 import { FaArrowCircleLeft } from "react-icons/fa";
-import Cast, { CharacterInfo } from "../../../components/Cast";
 import { getLoaderStatus } from "../../store/loader";
 import { useDispatch } from "react-redux";
+import CrewComponent from "./components/CrewComponent";
+import ProductionCompanies from "./components/ProductionCompanies";
+import Properties from "./components/Properties";
+import Actors from "./components/Actors";
+import MovieImage from "./components/MovieImage";
+import { CircularProgressbar } from "react-circular-progressbar";
+import "react-circular-progressbar/dist/styles.css";
 
-type Genres = {
+export type Genres = {
   id: number;
   name: string;
 };
 
-type MovieDetailTypes = {
+export type Companies = {
+  name: string;
+};
+
+export type MovieDetailTypes = {
+  production_companies: Companies[];
   id: number;
   overview: string;
   poster_path: string;
@@ -23,6 +35,7 @@ type MovieDetailTypes = {
   popularity: number | undefined;
   first_air_date: string;
   name: string;
+  vote_average: number
 };
 
 const Detail = () => {
@@ -41,9 +54,13 @@ const Detail = () => {
     movieDetail && movieDetail.release_date
       ? movieDetail.release_date.split("-")
       : movieDetail && movieDetail.first_air_date.split("-");
+
   const year = date && date[0];
   const month = date && date[1];
   const day = date && date[2];
+
+  const point = movieDetail?.vote_average.toFixed(1);
+
   useEffect(() => {
     GetDetailMovie(id).then((detail) => {
       setMovieDetail(detail.data);
@@ -51,7 +68,7 @@ const Detail = () => {
     GetPersons(id).then((detail) => {
       setCrew(detail.data.crew);
       setCast(detail.data.cast);
-      dispatch(getLoaderStatus(false))
+      dispatch(getLoaderStatus(false));
     });
   }, [id, dispatch]);
 
@@ -84,74 +101,46 @@ const Detail = () => {
             </button>
           </div>
           <div className="info">
-            <div className="image-container">
-              {movieDetail ? (
-                <img
-                  src={`${import.meta.env.VITE_IMAGE_BASE}${
-                    movieDetail?.poster_path
-                  }`}
-                />
-              ) : (
-                <></>
-              )}
-            </div>
+            {/* @ts-ignore */}
+            <MovieImage movieDetail={movieDetail} />
             <div className="detail-content">
+              <div className="circular-bar">
+                <CircularProgressbar
+                  minValue={1}
+                  maxValue={10}
+                  value={Number(`${point}`)}
+                  text={`${point}`}
+                  styles={{
+                    text: {
+                      fill: '#FFFFFF',
+                      fontSize: '26px',
+                      fontWeight: 'bold',
+                    },
+                    path: {
+                      stroke: '#3498db',
+                    },
+                    trail: {
+                      stroke: '#FFFFFF',
+                    },
+                  }}
+                />
+              </div>
               <h1 className="head">
                 {movieDetail ? title : ""}{" "}
                 <span>{`${year ? `(${year})` : ""}`}</span>
-              </h1>{" "}
-              <div className="properties">
-                <span>{`${day}/${month}/${year}`}(RD)</span>
-                <span>•</span>
-                {movieDetail &&
-                movieDetail.genres &&
-                movieDetail?.genres.length > 0 ? (
-                  movieDetail?.genres.map((genre: Genres, i) => {
-                    return (
-                      <span className="genres" key={i}>
-                        {genre.name}
-                      </span>
-                    );
-                  })
-                ) : (
-                  <></>
-                )}
-              </div>
+              </h1>
+              {/* @ts-ignore */}
+              <Properties day={day} month={month} year={year} movieDetail={movieDetail}
+              />
               <p>{movieDetail ? movieDetail.overview : ""}</p>
-              <div className="crew-field">
-                {directors && directors.length > 0 ? (
-                  directors.map(
-                    (director: { name: string; job: string }, index) => {
-                      return (
-                        <div className="directors" key={index}>
-                          <span>{director ? director?.name : ""}</span>
-                          <span>{director ? director?.job : ""}</span>
-                        </div>
-                      );
-                    }
-                  )
-                ) : (
-                  <></>
-                )}
-              </div>
+              {/* @ts-ignore */}
+              <ProductionCompanies movieDetail={movieDetail} />
+              <CrewComponent directors={directors} />
             </div>
           </div>
         </div>
       </div>
-      <div className="actor-header">
-        <h3>
-          <em>Actors</em>
-        </h3>
-      </div>
-      <div className="cast-field">
-        {cast && cast.length > 0 ? (
-          cast.map((cast: CharacterInfo, index: number) => (
-            <Cast key={index} data={cast} />
-          ))
-        ) : (
-          <></>
-        )}
-      </div>
+      <Actors cast={cast} />
     </DefaultLayout>
   );
 };

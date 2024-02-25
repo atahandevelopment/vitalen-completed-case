@@ -114,7 +114,20 @@
     height: auto;
     display: flex;
     justify-content: flex-start;
+    flex-direction: column;
     font-family: "Montserrat", sans-serif;
+}
+
+.crew-header {
+    font-weight: 700;
+    padding-bottom: 10px;
+}
+
+.crew-list {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: flex-start;
     flex-wrap: wrap;
     gap:40px;
 }
@@ -198,4 +211,44 @@
     }
   }
 
- 
+ .production-companies {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    font-family: "Montserrat", sans-serif;
+ }
+
+ .production-companies span {
+    font-family: Montserrat;
+    font-size: 16px;
+ }
+
+ .production-companies label {
+    font-family: Montserrat;
+    font-size: 16px;
+    font-weight: 700;
+ }
+
+.company-name {
+    font-weight: 700;
+    padding-bottom: 10px;
+}
+
+.company-list {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap:40px;
+    margin-bottom: 20px;
+}
+
+.circular-bar {
+    width: 70px; 
+    height:70px; 
+    color: "#FFFFFF";
+    margin-bottom: 30px;
+}

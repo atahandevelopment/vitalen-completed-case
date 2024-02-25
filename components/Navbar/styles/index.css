@@ -81,3 +81,17 @@
     }
 
 }
+
+@media screen and (max-width: 1440px) {
+    .navbar-container {
+        width: 95%;
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 22;
+        position: sticky;
+        top: 105px;
+        margin-left: 2.3%;
+    }
+}

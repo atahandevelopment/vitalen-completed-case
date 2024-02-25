@@ -23,6 +23,8 @@
     gap:8px;
 }
 
+
+
 .header-title p {
     font-family: Montserrat;
     font-size: 25px;
@@ -41,13 +43,16 @@
     text-align: center;
 }
 .random-movie {
-    position: absolute; /* Header container içinde absolut konumlandırıyoruz */
-    bottom: 0; /* Header container'ın altına hizalıyoruz */
-    left: 50%; /* Yatayda tam ortaya hizalıyoruz */
-    transform: translateX(-50%); /* Yatayda tam ortaya hizalamak için -50% kaydırma yapıyoruz */
-    max-width: 50%; /* Header container'ın yarısından daha fazla olmayacak şekilde genişlik ayarı */
-    padding: 0 45px; /* Sağ ve sol boşluk ayarı */
+    position: absolute;
+    bottom: 22px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 95%;
     display: flex;
+    height: 440px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
     gap: 195px;
 }
 
@@ -57,14 +62,92 @@
     z-index:9;
 }
 
-/* @media screen and (max-width: 1440px) {
+@media screen and (max-width: 1440px) {
     .header-container {
-        max-width: 100%;
+        width: 95%;
+        height: 590px;
+        border-radius: 4px;
+        position: relative;
     }
-
+    
     .random-movie {
-        max-width:50%;
-        position: static;
-
+        position: absolute;
+        bottom: 22px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 95%;
+        display: flex;
+        height: 440px;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 5%;
     }
-} */
+
+    .header-title p {
+        font-family: Montserrat;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 30px;
+        letter-spacing: 0em;
+        text-align: center;    
+    }
+    
+    .header-title h1 {
+        font-family: Montserrat;
+        font-size: 16px;
+        font-weight: 700;
+        line-height: 30px;
+        letter-spacing: 0em;
+        text-align: center;
+    }
+}
+
+@media screen and ( max-width: 768px ) {
+    .header-title {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 496px ) {
+    .random-movie {
+        position: absolute;
+        bottom: -84px;
+        left: 50%;
+        transform: translateX(-53%);
+        width: 95%;
+        display: flex;
+        height: 440px;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 5%;
+    }
+
+    .header-title-mbl {
+        color: #FFFFFF;
+        font-family: Montserrat;
+        position: absolute;
+        font-size: 12px;
+        width: 95%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        top: -83px;
+        left: 18px;
+    }
+
+    .header-title-mbl p {
+        font-size: 23px;
+    }
+
+    .header-title-mbl h1 {
+        font-size: 23px;
+    }
+}
+
+@media (min-width: 496px) {
+    .header-title-mbl {
+        display: none;
+    }
+}

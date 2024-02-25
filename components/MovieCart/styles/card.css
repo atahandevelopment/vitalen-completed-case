@@ -75,17 +75,17 @@
 
 @media screen and (max-width: 496px) {
     .cart-container {
-        width: 174px;
-        height: 417px;
+        width: 160px;
+        height: 298px;
         display: flex;
         flex-direction: column;
-        transform: translateX(2px);
+        transform: translateX(14px);
         align-items: flex-end;
         justify-content: flex-start;
     }
 
     .cart-container .img-container {
-        width: 174px;
+        width: 160px;
         height: 300px;
         border-radius: 4px 0px 4px 4px;
         box-shadow: 0px 0px 25px 0px #00000033;
@@ -94,7 +94,7 @@
     }
 
     .cart-container .img-container .movie-name-container {
-        width: 174px;
+        width: 160px;
         height: 96px;
         background-color: #24123AC2;
         display: flex;

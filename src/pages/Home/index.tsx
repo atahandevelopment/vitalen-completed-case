@@ -1,5 +1,10 @@
 import { useEffect, useState } from "react";
-import { GetPopularMovies, GetPopularTvSeries, GetTopRatedMovies, GetTopRatedSeries } from "./service";
+import {
+  GetPopularMovies,
+  GetPopularTvSeries,
+  GetTopRatedMovies,
+  GetTopRatedSeries,
+} from "./service";
 import { useDispatch } from "react-redux";
 import { getPopularMovie, getTvSeries } from "../../store/homeMovies";
 import PopularMovies from "./components/PopularMovies";
@@ -15,7 +20,7 @@ import { getLoaderStatus } from "../../store/loader";
 const Home = () => {
   const dispatch = useDispatch();
   const [topRatedTv, setTopRatedTv] = useState<TvSeries[]>([]);
-  const [topRatedMovies, setTopRatedMovies] = useState<TvSeries[]>([])
+  const [topRatedMovies, setTopRatedMovies] = useState<TvSeries[]>([]);
   const [randomMovie, setRandomMovie] = useState<TvSeries>();
   const [randomTvSerie, setRandomTvSerie] = useState<TvSeries>();
 
@@ -34,13 +39,15 @@ const Home = () => {
       .catch((error) => {
         console.error(error);
       });
-      GetTopRatedMovies().then((series) => {
+    GetTopRatedMovies()
+      .then((series) => {
         setTopRatedMovies(series.data.results);
       })
       .catch((error) => {
         console.error(error);
       });
-      GetTopRatedSeries().then((series) => {
+    GetTopRatedSeries()
+      .then((series) => {
         setTopRatedTv(series.data.results);
         dispatch(getLoaderStatus(false));
       })
@@ -82,27 +89,41 @@ const Home = () => {
   return (
     <DefaultLayout>
       <header id="home" className="header-container">
-        <img src={headerImg} />
         <div className="random-movie">
+          {/* Mobil Görünümde aktifleşir */}
+          <div className="header-title-mbl">
+            <p>Welcome to the</p>
+            <h1>World of TV Series & Movies</h1>
+          </div>
           {randomMovie ? (
-            <Link style={{ textDecoration:"none"}} onClick={() => dispatch(getLoaderStatus(true))} to={`/movie-detail/${randomMovie?.id}`}>
+            <Link
+              style={{ textDecoration: "none" }}
+              onClick={() => dispatch(getLoaderStatus(true))}
+              to={`/movie-detail/${randomMovie?.id}`}
+            >
               <MovieCart data={randomMovie} />
             </Link>
           ) : (
             <></>
           )}
+          {/* Varsayılan görünüm */}
           <div className="header-title">
             <p>Welcome to the</p>
             <h1>World of TV Series & Movies</h1>
           </div>
           {randomTvSerie ? (
-            <Link style={{ textDecoration:"none"}}  onClick={() => dispatch(getLoaderStatus(true))} to={`/movie-detail/${randomMovie?.id}`}>
+            <Link
+              style={{ textDecoration: "none" }}
+              onClick={() => dispatch(getLoaderStatus(true))}
+              to={`/movie-detail/${randomMovie?.id}`}
+            >
               <MovieCart data={randomTvSerie} />
             </Link>
           ) : (
             <></>
           )}
         </div>
+        <img src={headerImg} />
       </header>
       <PopularMovies />
       <PopularTvSeries />
