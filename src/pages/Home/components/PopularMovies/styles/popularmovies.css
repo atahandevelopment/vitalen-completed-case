@@ -40,3 +40,36 @@
     background-color: #a3a2a2;
     border-radius: 5px; 
   }
+
+  @media screen and (max-width: 1440px) {
+    .popular-movies {
+      width: 95%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+  }
+  .popular-movies .movies-field {
+      flex: 0 0 auto;
+      max-width: 98%;
+      height: 100%;
+      display: flex;
+      justify-content: flex-start;
+      overflow-x: auto;
+      gap: 93px;
+      align-items: center;
+  }
+  }
+
+  @media screen and (max-width: 496px) {
+    .popular-movies .movies-field {
+      flex: 0 0 auto;
+      max-width: 98%;
+      height: 100%;
+      display: flex;
+      justify-content: flex-start;
+      overflow-x: auto;
+      gap: 9px;
+      align-items: center;
+  }
+  }

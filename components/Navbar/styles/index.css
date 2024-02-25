@@ -57,3 +57,27 @@
     text-align: center;
     color:#707CB4;    
 }
+
+@media screen and (max-width: 496px) {
+    .nav-content .navbar .links {
+        text-decoration: none;
+        font-family: "Montserrat", sans-serif;
+        font-size: 12px;
+        font-weight: 500;
+        line-height: 20px;
+        letter-spacing: 0em;
+        text-align: center;
+        color:#707CB4;    
+    }
+
+    .nav-content .navbar {
+        width: 295px;
+        height: 100%;
+        display: flex;
+        gap:28px;
+        justify-content: flex-end;
+        align-items: center;
+        color:#FFFFFF;
+    }
+
+}

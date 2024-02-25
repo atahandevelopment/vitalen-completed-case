@@ -1,7 +1,10 @@
 .header-container {
     height: 590px;
     border-radius: 4px;
+    position: relative; /* Header container'ı referans alarak pozisyon belirleyeceğiz */
+   
 }
+
 
 
 .header-container img {
@@ -37,15 +40,15 @@
     letter-spacing: 0em;
     text-align: center;
 }
-.random-movie{
-    position: relative;
-    bottom: 450px;
-    /* left: 45px; */
-    max-width:100%;
-    padding: 0 45px;
-    z-index:9;
+.random-movie {
+    position: absolute; /* Header container içinde absolut konumlandırıyoruz */
+    bottom: 0; /* Header container'ın altına hizalıyoruz */
+    left: 50%; /* Yatayda tam ortaya hizalıyoruz */
+    transform: translateX(-50%); /* Yatayda tam ortaya hizalamak için -50% kaydırma yapıyoruz */
+    max-width: 50%; /* Header container'ın yarısından daha fazla olmayacak şekilde genişlik ayarı */
+    padding: 0 45px; /* Sağ ve sol boşluk ayarı */
     display: flex;
-    gap:195px;
+    gap: 195px;
 }
 
 .random-serie {
@@ -54,12 +57,14 @@
     z-index:9;
 }
 
-@media screen and (max-width: 1440px) {
+/* @media screen and (max-width: 1440px) {
     .header-container {
         max-width: 100%;
     }
 
     .random-movie {
-        
+        max-width:50%;
+        position: static;
+
     }
-}
+} */
